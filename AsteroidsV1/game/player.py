@@ -1,7 +1,7 @@
 import math
 from pyglet.window import key
 from pyglet.media import player
-from . import physicalobject, resources, bullet
+from . import physicalobject, resources, bullet, load
 from game.resources import fireSFX
 import pyglet
 
@@ -73,6 +73,7 @@ class Player(physicalobject.PhysicalObject):
 
     def handle_collision_with(self, other_object):
         super(Player, self).handle_collision_with(other_object)
-        new_player = Player(x=400, y=300, batch=self.batch)
-        new_player.respawn = True
-        self.new_objects.append(new_player)
+        if load.lives > 0:
+            new_player = Player(x=400, y=300, batch=self.batch)
+            new_player.respawn = True
+            self.new_objects.append(new_player)
