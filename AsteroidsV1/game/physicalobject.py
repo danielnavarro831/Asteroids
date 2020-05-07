@@ -11,6 +11,7 @@ class PhysicalObject(pyglet.sprite.Sprite):
         self.reacts_to_bullets = True
         self.is_bullet = False
         self.new_objects = []
+        self.respawn = False
 
     def check_bounds(self):
         min_x = -self.image.width / 2
@@ -46,3 +47,4 @@ class PhysicalObject(pyglet.sprite.Sprite):
             self.dead = False
         else:
             self.dead = True
+

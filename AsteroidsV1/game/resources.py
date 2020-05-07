@@ -24,7 +24,7 @@ engine_image = pyglet.resource.image("engine_flame.png")
 engine_image.anchor_x = engine_image.width * 1.5 
 engine_image.anchor_y = engine_image.height / 2
 
-bullet_sound = pyglet.media.load('C:\\Users\\Daniel\\source\\repos\\Asteroids\\resources\\bullet.wav')
+bullet_sound = pyglet.resource.media("bullet.wav")
 
 def fireSFX():
     bullet_sound.play()
