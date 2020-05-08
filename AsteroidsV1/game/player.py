@@ -7,6 +7,8 @@ import pyglet
 
 player = pyglet.media.Player()
 
+lives = 3
+
 class Player(physicalobject.PhysicalObject):
 
     def __init__(self, *args, **kwargs):
@@ -44,7 +46,7 @@ class Player(physicalobject.PhysicalObject):
     def on_key_press(self, symbol, modifiers):
         if symbol == key.SPACE:
             self.fire()
-            resources.fireSFX()
+            #resources.fireSFX()
 
     def delete(self):
         self.engine_sprite.delete()
@@ -73,7 +75,7 @@ class Player(physicalobject.PhysicalObject):
 
     def handle_collision_with(self, other_object):
         super(Player, self).handle_collision_with(other_object)
-        if load.lives > 0:
+        if lives > 0:
             new_player = Player(x=400, y=300, batch=self.batch)
             new_player.respawn = True
             self.new_objects.append(new_player)

@@ -1,5 +1,6 @@
 import pyglet
 from game import resources, load, physicalobject, player
+from game.load import player_lives
 game_window = pyglet.window.Window(800, 600, "Asteroids")
 
 #Batch Draw
@@ -15,7 +16,7 @@ game_window.push_handlers(player_ship.on_key_press)
 
 asteroids = load.asteroids(3, player_ship.position, batch=main_batch)
 
-player_lives = load.player_lives(load.lives, batch=main_batch)
+lives = load.player_lives(player.lives, batch=main_batch)
 
 game_objects = [player_ship] + asteroids
 
@@ -40,8 +41,7 @@ def update(dt):
                 game_window.push_handlers(obj.key_handler)
                 game_window.push_handlers(obj.on_key_press)
                 obj.respawn = False
-                load.lives -= 1
-                print("lives: " + str(load.lives))
+                print("lives: " + str(player.lives))
         #Removal
         for to_remove in [obj for obj in game_objects if obj.dead]:
             to_remove.delete()

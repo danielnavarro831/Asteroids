@@ -2,10 +2,8 @@
 import pyglet
 import random
 import math
-from . import resources, physicalobject, asteroid
+from . import resources, physicalobject, asteroid, player
 from game.util import distance
-
-lives = 3
 
 def asteroids(num_asteroids, player_position, batch=None):
     asteroids = []
@@ -24,8 +22,7 @@ def asteroids(num_asteroids, player_position, batch=None):
 def player_lives(lives, batch=None):
     player_lives = []
     for i in range(lives):
-        new_sprite = pyglet.sprite.Sprite(img=resources.player_image,
-                                          x=785-i*30, y=585, batch=batch)
+        new_sprite = pyglet.sprite.Sprite(img=resources.player_image, x=785-i*30, y=585, batch=batch)
         new_sprite.scale = 0.5
         player_lives.append(new_sprite)
     return player_lives
